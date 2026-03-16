@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #223e5a; color: #fff; }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 1000px; background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px); padding: 12px 30px; border-radius: 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2); z-index: 1000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .logo { color: white; font-weight: 600; font-size: 1.2rem; }
+        .nav-links a { text-decoration: none; color: rgba(255,255,255,0.8); margin: 0 15px; cursor: pointer; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: #fff; font-weight: 600; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        
+        /* Base Section Styles */
+        section {
+            display: none; 
+            height: 100vh;
+            padding: 100px 10% 60px;
+            width: 100%;
+            margin: 0 auto;
+            align-items: center;
+            flex-direction: column; 
+            justify-content: center; 
+            animation: fadeIn 0.5s ease;
+            background: linear-gradient(to right, #b2d8e5, #223e5a);
+            color: white;
+            overflow: hidden;
+        }
+
+        /* Scrolling Pages */
+        #about, #work {
+            height: auto; 
+            min-height: 100vh;
+            flex-direction: column;
+            overflow-y: auto;
+            display: none;
+        }
+
+        section.active { display: flex; }
+        #about.active, #work.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Content Styles */
+        .content-box { z-index: 2; width: 100%; max-width: 800px; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; color: white; }
+        p { font-size: 1.1rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 30px; }
+
+        /* Home Specific Adjustments */
+        #home .image-placeholder {
+            max-width: 350px; 
+            margin: 0 auto 30px;
+            border-radius: 50%; 
+            border: 5px solid rgba(255,255,255,0.2);
+        }
+
+        /* Gamer Card Custom Style */
+        .gamer-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d8e5;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px auto 40px;
+            max-width: 600px;
+            text-align: left;
+            box-shadow: 0 0 20px rgba(178, 216, 229, 0.2);
+        }
+
+        /* Contact Page Styles */
+        .contact-info { margin-top: 20px; }
+        .contact-info p { font-size: 1.3rem; margin-bottom: 15px; }
+        .facebook-link { 
+            color: #fff; 
+            text-decoration: underline; 
+            font-weight: 600; 
+            transition: color 0.3s ease;
+        }
+        .facebook-link:hover { color: #b2d8e5; }
+
+        .image-placeholder {
+            flex: none; 
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto 50px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .image-placeholder img {
+            width: 100%; height: auto; display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">cloud</div>
+        <div class="nav-links">
+            <a onclick="showPage('home')" id="link-home" class="active">Home</a>
+            <a onclick="showPage('about')" id="link-about">About</a>
+            <a onclick="showPage('work')" id="link-work">Achievement</a>
+        </div>
+        <a onclick="showPage('contact-page')" class="contact-btn" style="cursor:pointer; background: #223e5a; color: whitesmoke; padding: 10px 25px; border-radius: 25px; text-decoration: none; font-weight: 600;">Contact</a>
+    </nav>
+
+    <section id="home" class="active">
+        <div class="image-placeholder">
+            <img src="FB_IMG_1771805441108.jpg" alt="Cloud Photo">
+        </div>
+        <div class="content-box" style="text-align: center;">
+            <h1>I’m Cloud</h1>
+            <p>My full name is Joshua D. Ardenia, but you can call me anything you want. You can call me love if you want 😘.</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="content-box" style="text-align: center;">
+            <h1>About Me</h1>
+            <p>Master of rotation in ML, but still trying to rotate my life in the right direction.<br>
+            Hard-scoping in CODM because I’m focused on the goal, not the distractions. <br>
+            <br>🎯
+            “Easier to clutch a 1v4 than to understand mixed signals.”</p>
+        </div>
+
+        <div class="gamer-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(178, 216, 229, 0.3); padding-bottom: 10px; margin-bottom: 15px;">
+                <span style="font-weight: 800; letter-spacing: 2px; color: #b2d8e5;">PLAYER STATUS</span>
+                <span style="font-size: 0.8rem; opacity: 0.7;">REGION: PH</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div><p style="font-size: 0.7rem; color: #b2d8e5; margin-bottom: 5px;">CODENAME</p><p style="font-weight: 600;">lloyddiee</p></div>
+                <div><p style="font-size: 0.7rem; color: #b2d8e5; margin-bottom: 5px;">RANK</p><p style="font-weight: 600;">Legendary</p></div>
+                <div><p style="font-size: 0.7rem; color: #b2d8e5; margin-bottom: 5px;">FAVORITE LOADOUT</p><p style="font-weight: 600;">Shotgun/ Rusher</p></div>
+                <div><p style="font-size: 0.7rem; color: #b2d8e5; margin-bottom: 5px;">GAME</p><p style="font-weight: 600;">COD: Mobile</p></div>
+            </div>
+            <div style="margin-top: 20px; padding: 15px; background: rgba(178, 216, 229, 0.1); border-radius: 5px; border-left: 4px solid #b2d8e5;">
+                <p style="font-style: italic; font-size: 0.95rem; color: #fff;">"Disconnected. Hindi lang ang internet ko, pati na rin tayo."</p>
+            </div>
+        
+
+        <div class="image-placeholder">
+            <img src="Screenshot_2026-03-11-06-43-05-99_6389d9300adb962bb97af6a1b43c5bd0.jpg" alt="About Cloud CODM">
+        </div>
+        </div>
+
+        <div class="content-box" style="text-align: center; margin-top: 50px;">
+            <p>Catch me in the Land of Dawn proving that high IQ beats a high rank every time. 🧠🔥.</p>
+        </div>
+
+        <div class="gamer-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(178, 216, 229, 0.3); padding-bottom: 10px; margin-bottom: 15px;">
+                <span style="font-weight: 800; letter-spacing: 2px; color: #b2d8e5;">PLAYER STATUS</span>
+                <span style="font-size: 0.8rem; opacity: 0.7;">REGION: PH</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div><p style="font-size: 0.7rem; color: #b2d8e5; margin-bottom: 5px;">CODENAME</p><p style="font-weight: 600;">zCloud</p></div>
+                <div><p style="font-size: 0.7rem; color: #b2d8e5; margin-bottom: 5px;">RANK</p><p style="font-weight: 600;">Mythic Glory</p></div>
+                <div><p style="font-size: 0.7rem; color: #b2d8e5; margin-bottom: 5px;">Main Role</p><p style="font-weight: 600;">Exp lane/Gold lane</p></div>
+                <div><p style="font-size: 0.7rem; color: #b2d8e5; margin-bottom: 5px;">GAME</p><p style="font-weight: 600;"> Mobile Legends</p></div>
+            </div>
+            <div style="margin-top: 20px; padding: 15px; background: rgba(178, 216, 229, 0.1); border-radius: 5px; border-left: 4px solid #b2d8e5;">
+                <p style="font-style: italic; font-size: 0.95rem; color: #fff;">"Panalo sa Lima talo sa isa.."</p>
+            </div>
+        
+
+        <div class="image-placeholder">
+            <img src="Messenger_creation_8C22DBCE-35C5-42AA-AB19-E4D8CC556EEA.jpeg" alt="About Cloud ML">
+        </div>
+    </section>
+
+    <section id="work">
+        <div class="content-box" style="text-align: center;">
+            <h2>My Achievements</h2>
+            <p>Check it out.</p>
+        </div>
+        <div class="image-placeholder"><img src="received_636792918898465.jpeg" alt="Achievement 1"></div>
+        <div class="image-placeholder"><img src="received_875967647842273.jpeg" alt="Achievement 2"></div>
+        <div class="image-placeholder"><img src="Messenger_creation_97E7985B-D567-4E1E-A2E2-94F989BEEAE8.jpeg" alt="Achievement 3"></div>
+        <div class="image-placeholder"><img src="received_649896411252013.jpeg" alt="Achievement 4"></div>
+    </section>
+
+    <section id="contact-page">
+        <div class="content-box">
+            <h1>Let's Connect</h1>
+            <div class="contact-info">
+                <p><strong>Email:</strong> cloudchaise@gmail.com</p>
+                <p><strong>Phone:</strong> 09364527200</p>
+                <p><strong>Facebook:</strong> <a href="https://www.facebook.com/share/17vW6DK1cx/" target="_blank" class="facebook-link">Joshua Ardenia</a></p>
+                <p><strong>Tiktok:</strong> <a href="https://www.tiktok.com/@chaisecloud?_r=1&_t=ZS-94jc0PE1ciP" target="_blank" style="color:white; text-decoration: underline;">zCloud</a></p>
+                <p><strong>Instagram:</strong> <a href="https://www.instagram.com/cloudardenia?igsh=N3UwMHJkam01dWEy" target="_blank" style="color:white; text-decoration: underline;">cloudardenia</a></p>
+            </div>
+        </div>
+    </section>
+
+<script>
+    function showPage(pageId) {
+        const sections = document.querySelectorAll('section');
+        sections.forEach(sec => sec.classList.remove('active'));
+
+        const links = document.querySelectorAll('.nav-links a');
+        links.forEach(link => link.classList.remove('active'));
+
+        document.getElementById(pageId).classList.add('active');
+        if(document.getElementById('link-' + pageId)) {
+            document.getElementById('link-' + pageId).classList.add('active');
+        }
+        window.scrollTo(0, 0);
+    }
+</script>
+</body>
+</html>
